@@ -10,7 +10,7 @@ int main()
 	
 	CWinApp* pApp = AfxGetApp();
 	pApp->InitApplication();  //CWinApp::InitApplication
-	pApp->InitInstance();     //CMyWinApp::InitInstance
+	pApp->InitInstance();     //CMyWinApp::InitInstance --> CMyFrameWnd
 	pApp->Run();              //CwinApp::Run
 
 	cout << "main 結束執行" << endl;
@@ -33,7 +33,7 @@ main 開始執行
 	CMyFrameWnd 建構式
 		CFrameWnd::Create()
 		Cwnd::CreateEx()
-		CFrameWnd::PreCreateWindow()
+		CFrameWnd::PreCreateWindow()  //又回到CFrameWnd
 	CWinApp::Run()
 main 結束執行
 Press any key to continue
