@@ -2,6 +2,10 @@
 #define MFC_H
 #include <iostream>
 
+typedef int BOOL;
+#define TRUE 1
+#define FALSE 0
+
 using namespace std;
 /*
 CObject
@@ -42,6 +46,24 @@ public:
     CWinApp()  { m_pCurrentWinApp = this; 
                  cout << "CWinApp 建構式" << endl; }
     ~CWinApp() { cout << "CWinApp 解構式" << endl; }
+
+	BOOL InitApplication()
+	{
+		cout << "CWinApp::InitApplication()" << endl;
+		return TRUE;
+	}
+
+	BOOL InitInstance()
+	{
+		cout << "CWinApp::InitInstance()" << endl;
+		return TRUE;
+	}
+
+	BOOL Run()
+	{
+		cout << "CWinApp::Run()" << endl;
+		return TRUE;
+	}
 };
 
 class CDocument : public CComTarget
@@ -56,6 +78,19 @@ class CWnd : public CComTarget
 public:
     CWnd()  { cout << "CWnd 建構式" << endl; }
     ~CWnd() { cout << "CWnd 解構式" << endl; }
+
+    BOOL CreateEx()
+	{
+		cout << "Cwnd::CreateEx()" << endl;
+		PreCreateWindow(); //Cwnd有定義，CFrameWnd也有定義
+		return TRUE;
+	}
+
+	BOOL PreCreateWindow()
+	{
+		cout << "CWnd::PreCreateWindow()" << endl;
+		return TRUE;
+	}
 };
 
 class CFrameWnd : public CWnd

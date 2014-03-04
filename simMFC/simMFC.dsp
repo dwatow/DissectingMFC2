@@ -64,7 +64,7 @@ LINK32=link.exe
 # PROP Intermediate_Dir "Debug"
 # PROP Target_Dir ""
 # ADD BASE CPP /nologo /W3 /Gm /GX /ZI /Od /D "WIN32" /D "_DEBUG" /D "_CONSOLE" /D "_MBCS" /YX /FD /GZ  /c
-# ADD CPP /nologo /W3 /Gm /GX /ZI /Od /D "WIN32" /D "_DEBUG" /D "_CONSOLE" /D "_MBCS" /YX /FD /GZ  /c
+# ADD CPP /nologo /W3 /Gm /GX /ZI /Od /D "WIN32" /D "_DEBUG" /D "_CONSOLE" /D "_MBCS" /FR /YX /FD /GZ  /c
 # ADD BASE RSC /l 0x404 /d "_DEBUG"
 # ADD RSC /l 0x404 /d "_DEBUG"
 BSC32=bscmake.exe
@@ -83,6 +83,14 @@ LINK32=link.exe
 # Begin Group "Source Files"
 
 # PROP Default_Filter "cpp;c;cxx;rc;def;r;odl;idl;hpj;bat"
+# Begin Source File
+
+SOURCE=.\mfc.cpp
+# End Source File
+# Begin Source File
+
+SOURCE=.\my.cpp
+# End Source File
 # End Group
 # Begin Group "Header Files"
 
@@ -90,6 +98,10 @@ LINK32=link.exe
 # Begin Source File
 
 SOURCE=.\mfc.h
+# End Source File
+# Begin Source File
+
+SOURCE=.\my.h
 # End Source File
 # End Group
 # Begin Group "Resource Files"
