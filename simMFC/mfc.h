@@ -1,10 +1,11 @@
 #ifndef MFC_H
 #define MFC_H
-#include <iostream>
 
 typedef int BOOL;
 #define TRUE 1
 #define FALSE 0
+
+#include <iostream>
 
 using namespace std;
 /*
@@ -37,12 +38,30 @@ class CWinThread : public CComTarget
 public:
     CWinThread()  { cout << "CWinThread 建構式" << endl; }
     ~CWinThread() { cout << "CWinThread 解構式" << endl; }
+
+	virtual BOOL InitInstance()
+	{
+		cout << "CWinThread::InitInstance()" << endl;
+		return TRUE;
+	}
+
+	virtual int Run()
+	{
+		cout << "CWinThread::Run()" << endl;
+		return 1;
+	}
+
 };
+
+class CWnd;
 
 class CWinApp : public CWinThread
 {
 public:
     CWinApp* m_pCurrentWinApp;
+	CWnd* m_pMainWnd;
+
+public:
     CWinApp()  { m_pCurrentWinApp = this; 
                  cout << "CWinApp 建構式" << endl; }
     ~CWinApp() { cout << "CWinApp 解構式" << endl; }
@@ -79,18 +98,9 @@ public:
     CWnd()  { cout << "CWnd 建構式" << endl; }
     ~CWnd() { cout << "CWnd 解構式" << endl; }
 
-    BOOL CreateEx()
-	{
-		cout << "Cwnd::CreateEx()" << endl;
-		PreCreateWindow(); //Cwnd有定義，CFrameWnd也有定義
-		return TRUE;
-	}
-
-	BOOL PreCreateWindow()
-	{
-		cout << "CWnd::PreCreateWindow()" << endl;
-		return TRUE;
-	}
+	virtual BOOL Create();
+    BOOL CreateEx();  // -->   PreCreateWindow();
+	virtual BOOL PreCreateWindow();
 };
 
 class CFrameWnd : public CWnd
@@ -98,6 +108,8 @@ class CFrameWnd : public CWnd
 public:
     CFrameWnd()  { cout << "CFrameWnd 建構式" << endl; }
     ~CFrameWnd() { cout << "CFrameWnd 解構式" << endl; }
+	BOOL Create();  //  --> CreateEx(); (CWnd::CreateEx()  -->  CWnd::PreCreateWindow();)
+	virtual BOOL PreCreateWindow();
 };
 
 class CView : public CWnd

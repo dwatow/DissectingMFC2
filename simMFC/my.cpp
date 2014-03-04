@@ -16,3 +16,12 @@ int main()
 	cout << "main 結束執行" << endl;
 	return 0;
 }
+
+BOOL CMyWinApp::InitInstance()
+{
+	CMyFrameWnd* pMainWnd;
+	cout << "CMyWinApp::InitInstance" << endl;
+	pMainWnd = new CMyFrameWnd();  //CMyFrameWnd 建構式
+	return TRUE;
+}
+
