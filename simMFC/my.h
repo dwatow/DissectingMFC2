@@ -10,6 +10,13 @@ class CMyFrameWnd : public CFrameWnd
 public:
     CMyFrameWnd()  { cout << "CMyFrameWnd 建構式" << endl; Create();}
     ~CMyFrameWnd() { cout << "CMyFrameWnd 解構式" << endl; }
+
+	virtual BOOL CreateEx(){ cout << "最後一層試試看！" << endl; return TRUE; }
+	virtual BOOL PreCreateWindow()
+	{
+		cout << "猜中了！是CMyFrameWnd::PreCreateWindow" << endl;
+		return TRUE;
+	}
 };
 
 

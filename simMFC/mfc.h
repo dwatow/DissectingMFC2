@@ -98,8 +98,8 @@ public:
     CWnd()  { cout << "CWnd 建構式" << endl; }
     ~CWnd() { cout << "CWnd 解構式" << endl; }
 
+    virtual BOOL CreateEx();  // -->   PreCreateWindow();
 	virtual BOOL Create();
-    BOOL CreateEx();  // -->   PreCreateWindow();
 	virtual BOOL PreCreateWindow();
 };
 
@@ -108,7 +108,8 @@ class CFrameWnd : public CWnd
 public:
     CFrameWnd()  { cout << "CFrameWnd 建構式" << endl; }
     ~CFrameWnd() { cout << "CFrameWnd 解構式" << endl; }
-	BOOL Create();  //  --> CreateEx(); (CWnd::CreateEx()  -->  CWnd::PreCreateWindow();)
+	virtual BOOL Create();  //  --> CreateEx(); (CWnd::CreateEx()  -->  CWnd::PreCreateWindow();)
+	virtual BOOL CreateEx(){ cout << "因為沒有改寫啦！" << endl; return TRUE; }
 	virtual BOOL PreCreateWindow();
 };
 
